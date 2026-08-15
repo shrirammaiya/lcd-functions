@@ -9,3 +9,5 @@ It then works like a modular unit without requirement of manual pin editing.
 
 The .h files should be included in Core/Inc
 The .c files should be included in Core/Src
+
+Current files are configured to use SPI2
