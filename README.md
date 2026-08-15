@@ -6,3 +6,6 @@ In CubeMX pin editor window:
 - Chip Select pin should be named as TFT_CS
 
 It then works like a modular unit without requirement of manual pin editing.
+
+The .h files should be included in Core/Inc
+The .c files should be included in Core/Src
