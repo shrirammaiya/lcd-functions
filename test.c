@@ -53,15 +53,16 @@
   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
 **************************************************************************************************/
 		
+//#include <pic.h>
 #include "lcd.h"
 //#include "delay.h"
 #include "main.h"
 #include "gui.h"
 #include "test.h"
+#include "pic.h"
 //#include "touch.h"
 //#include "key.h"
 //#include "led.h"
-#include "pic.h"
 
 
 
@@ -257,16 +258,28 @@ void Chinese_Font_test(void)
 ******************************************************************************/
 void Pic_test(void)
 {
-	DrawTestPage("����7:ͼƬ��ʾ����");
+//	DrawTestPage("����7:ͼƬ��ʾ����");
 	//LCD_Fill(0,20,lcddev.width,lcddev.height-20,WHITE);
-	Gui_Drawbmp16(30,30,gImage_qq);
-	Show_Str(30+12,75,BLUE,YELLOW,"QQ",16,1);
-	Gui_Drawbmp16(90,30,gImage_qq);
-	Show_Str(90+12,75,BLUE,YELLOW,"QQ",16,1);
-	Gui_Drawbmp16(150,30,gImage_qq);
-	Show_Str(150+12,75,BLUE,YELLOW,"QQ",16,1);
-	HAL_Delay(1200);
+	Gui_Drawbmp16(0,0,480,320,IMAGE);
+//	Show_Str(30+12,75,BLUE,YELLOW,"QQ",16,1);
+//	Gui_Drawbmp16(90,30,gImage_qq);
+//	Show_Str(90+12,75,BLUE,YELLOW,"QQ",16,1);
+//	Gui_Drawbmp16(150,30,gImage_qq);
+//	Show_Str(150+12,75,BLUE,YELLOW,"QQ",16,1);
+//	HAL_Delay(1200);
 }
+//void Pic_test(void)
+//{
+//	DrawTestPage("����7:ͼƬ��ʾ����");
+//	//LCD_Fill(0,20,lcddev.width,lcddev.height-20,WHITE);
+//	Gui_Drawbmp16(30,30,gImage_qq);
+//	Show_Str(30+12,75,BLUE,YELLOW,"QQ",16,1);
+//	Gui_Drawbmp16(90,30,gImage_qq);
+//	Show_Str(90+12,75,BLUE,YELLOW,"QQ",16,1);
+//	Gui_Drawbmp16(150,30,gImage_qq);
+//	Show_Str(150+12,75,BLUE,YELLOW,"QQ",16,1);
+//	HAL_Delay(1200);
+//}
 
 /*****************************************************************************
  * @name       :void Rotate_Test(void)
@@ -285,8 +298,8 @@ void Rotate_Test(void)
 	LCD_direction(i);
 	DrawTestPage("����8:��Ļ��ת����");
 	Show_Str(20,30,BLUE,YELLOW,Direction[i],16,1);
-	Gui_Drawbmp16(30,50,gImage_qq);
-	HAL_Delay(500);HAL_Delay(500);
+	Gui_Drawbmp16(30,50,480,320,IMAGE);
+//	HAL_Delay(500);HAL_Delay(500);
 	}
 	LCD_direction(USE_HORIZONTAL);
 }
