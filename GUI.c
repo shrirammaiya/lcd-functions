@@ -767,19 +767,45 @@ void Gui_StrCenter(u16 x, u16 y, u16 fc, u16 bc, u8 *str,u8 size,u8 mode)
  * @function   :Display a 16-bit BMP image
  * @parameters :x:the bebinning x coordinate of the BMP image
                 y:the bebinning y coordinate of the BMP image
+                resx: the x resolution ie width of image
+                resy: the y resolution ie height of image
 								p:the start address of image array
  * @retvalue   :None
 ******************************************************************************/ 
-void Gui_Drawbmp16(u16 x,u16 y,const unsigned char *p) //��ʾ40*40 QQͼƬ
+void Gui_Drawbmp16(u16 x,u16 y, u16 resx, u16 resy, const unsigned char *p) //��ʾ40*40 QQͼƬ
 {
-  	int i; 
+  	int i;
 	unsigned char picH,picL; 
-	LCD_SetWindows(x,y,x+40-1,y+40-1);//��������
-    for(i=0;i<40*40;i++)
+	LCD_SetWindows(x,y,x+resx-1,y+resy-1);//��������
+    for(i=0;i<resx*resy;i++)
 	{	
-	 	picL=*(p+i*2);	//���ݵ�λ��ǰ
-		picH=*(p+i*2+1);				
+	 	picH=*(p+i*2);	//���ݵ�λ��ǰ
+		picL=*(p+i*2+1);
 		Lcd_WriteData_16Bit(picH<<8|picL);  						
-	}	
-	LCD_SetWindows(0,0,lcddev.width-1,lcddev.height-1);//�ָ���ʾ����Ϊȫ��	
+	}
+	LCD_SetWindows(0,0,lcddev.width-1,lcddev.height-1);//�ָ���ʾ����Ϊȫ��
 }
+//void Gui_Drawbmp16(u16 x,u16 y,const uint16_t *p) //��ʾ40*40 QQͼƬ
+//{
+//  	int i,j,k;
+//  	k=0;
+//  	j=0;
+//	unsigned char picH,picL;
+//	LCD_SetWindows(x,y,x+480-1,y+320-1);//��������
+//
+//for(j=0; j<160;k++){
+//	for(i=0;i<240;i++)
+//	{
+//    	picL=*(p+(i*(j))*2);	//���ݵ�λ��ǰ
+//		picH=*(p+(i*(j))*2+1);
+//		Lcd_WriteData_16Bit(picH<<8|picL);
+//		Lcd_WriteData_16Bit(picH<<8|picL);
+//
+//	}
+//	if(j%2==0) j++;
+//
+//}
+//
+//	LCD_SetWindows(0,0,lcddev.width-1,lcddev.height-1);//�ָ���ʾ����Ϊȫ��
+//}
+
