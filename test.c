@@ -198,7 +198,10 @@ void English_Font_test(void)
 	Show_Str(10,60,BLUE,YELLOW,"6X12:~!@#$%^&*()_+{}:<>?/|-+.",12,0);
 	Show_Str(10,80,BLUE,YELLOW,"8X16:abcdefghijklmnopqrstuvwxyz0123456789",16,0);
 	Show_Str(10,100,BLUE,YELLOW,"8X16:ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",16,1);
-	Show_Str(10,120,BLUE,YELLOW,"8X16:~!@#$%^&*()_+{}:<>?/|-+.",16,0); 
+	Show_Str(10,120,BLUE,YELLOW,"8X16:~!@#$%^&*()_+{}:<>?/|-+.",16,0);
+	LCD_Draw_Large_Gear(10, 140 ,'D', BLUE, 1);
+	LCD_Draw_Large_Gear(10, 170,'D', BLUE, 2);
+	LCD_Draw_Large_Gear(10, 200 ,'D', BLUE, 3);
 	HAL_Delay(1200);
 }
 
