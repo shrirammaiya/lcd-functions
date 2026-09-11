@@ -63,7 +63,7 @@ typedef int8_t   s8;
 typedef int16_t  s16;
 typedef int32_t  s32;
 
-
+void LCD_Draw_Large_Gear(u16 x, u16 y, char gear, u16 color, u8 scale);
 void GUI_DrawPoint(u16 x,u16 y,u16 color);
 void LCD_Fill(u16 sx,u16 sy,u16 ex,u16 ey,u16 color);
 void LCD_DrawLine(u16 x1, u16 y1, u16 x2, u16 y2);
