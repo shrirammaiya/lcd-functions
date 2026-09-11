@@ -809,3 +809,40 @@ void Gui_Drawbmp16(u16 x,u16 y, u16 resx, u16 resy, const unsigned char *p) //�
 //	LCD_SetWindows(0,0,lcddev.width-1,lcddev.height-1);//�ָ���ʾ����Ϊȫ��
 //}
 
+/*****************************************************************************
+ * @function   : LCD_Draw_Large_Gear
+ * @description: Displays overlaid 'D' or 'N' at specified scale without
+ *               overwriting background pixels.
+ * @parameters : x, y  : Starting coordinates (top-left corner)
+ *               gear  : 'D' or 'N'
+ *               color : Pixel color (e.g., YELLOW, GREEN, WHITE)
+ *               scale : Size multiplier (1 = 16x24, 2 = 32x48, 3 = 48x72)
+******************************************************************************/
+void LCD_Draw_Large_Gear(u16 x, u16 y, char gear, u16 color, u8 scale)
+{
+    u16 old_color = POINT_COLOR;
+    POINT_COLOR = color;
+
+    const uint16_t *bitmap = (gear == 'D' || gear == 'd') ? BITMAP_D : BITMAP_N;
+
+    for (u8 row = 0; row < 24; row++)
+    {
+        uint16_t row_data = bitmap[row];
+        for (u8 col = 0; col < 16; col++)
+        {
+            // Check if pixel bit is active (1)
+            if (row_data & (0x8000 >> col))
+            {
+                // Multiply pixel blocks based on scale
+                for (u8 sx = 0; sx < scale; sx++)
+                {
+                    for (u8 sy = 0; sy < scale; sy++)
+                    {
+                        LCD_DrawPoint(x + (col * scale) + sx, y + (row * scale) + sy);
+                    }
+                }
+            }
+        }
+    }
+    POINT_COLOR = old_color;
+}
